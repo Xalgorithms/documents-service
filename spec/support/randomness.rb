@@ -52,6 +52,10 @@ module Randomness
     rand_array(n) { create(name, args) }
   end
 
+  def rand_array_of_documents(n = 10)
+    rand_array(n) { rand_document }
+  end
+  
   def rand_document
     rand_array_of_hexes.inject({}) { |o, k| o.merge(k => Faker::Number.hexadecimal(10)) }
   end

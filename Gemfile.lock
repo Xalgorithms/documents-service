@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/Xalgorithms/xa-ubl.git
+  revision: 3ee7644adf9aacb9d41cbaea1b96935b69cad151
+  specs:
+    xa-ubl (0.0.2)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -77,7 +84,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.2.0)
     minitest (5.10.2)
     mongo (2.4.2)
       bson (>= 4.2.1, < 5.0.0)
@@ -90,8 +97,8 @@ GEM
       rspec (>= 2.14)
     multi_json (1.12.1)
     nio4r (2.1.0)
-    nokogiri (1.7.2)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -196,6 +203,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   uuid
+  xa-ubl!
 
 RUBY VERSION
    ruby 2.3.3p222

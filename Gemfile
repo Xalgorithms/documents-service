@@ -14,6 +14,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'mongoid', '~> 6.1.0'
 gem 'uuid'
 
+# ours
+gem 'xa-ubl', github: 'Xalgorithms/xa-ubl'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

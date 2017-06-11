@@ -24,7 +24,8 @@ describe DocumentService do
         dm = Document.create(src: src)
 
         # create automatically calls service
-        expect(dm.content).to eql(content)
+        dm.reload
+        expect(dm.content).to eql(content.with_indifferent_access)
       end
     end
   end

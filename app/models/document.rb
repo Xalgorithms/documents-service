@@ -6,6 +6,6 @@ class Document
   field :content, type: Hash
 
   after_create do |m|
-    DocumentService.created(m)
+    DocumentService.created(m._id.to_s)
   end
 end

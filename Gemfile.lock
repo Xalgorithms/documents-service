@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/Xalgorithms/xa-ubl.git
-  revision: 3ee7644adf9aacb9d41cbaea1b96935b69cad151
+  revision: 9f4478a199ed19ba10bb94a79ea0afac9fb85a33
   specs:
-    xa-ubl (0.0.2)
+    xa-ubl (0.0.3)
       nokogiri
 
 GEM

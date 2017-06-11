@@ -15,6 +15,7 @@ gem 'mongoid', '~> 6.1.0'
 gem 'uuid'
 
 # ours
+gem 'xa-messages', github: 'Xalgorithms/xa-messages'
 gem 'xa-ubl', github: 'Xalgorithms/xa-ubl'
 
 # Use Capistrano for deployment

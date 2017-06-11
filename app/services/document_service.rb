@@ -7,8 +7,12 @@ class DocumentService
   
   def self.created(id)
     dm = Document.find(id)
-    Parser.new.parse(dm.src) do |content|
-      dm.update_attributes(content: content)
+    if dm
+      Parser.new.parse(dm.src) do |content|
+        dm.update_attributes(content: content)
+      end
+
+      QueueService.document_created(id)
     end
   end
 end

@@ -21,8 +21,13 @@ describe DocumentService do
     FILES.each do |fn|
       src = IO.read(fn)
       pr.parse(src) do |content|
+        queue_doc_id = nil
+        expect(QueueService).to receive(:document_created) do |id|
+          queue_doc_id = id
+        end
         dm = Document.create(src: src)
 
+        expect(queue_doc_id).to eql(dm._id.to_s)
         # create automatically calls service
         dm.reload
         expect(dm.content).to eql(content.with_indifferent_access)

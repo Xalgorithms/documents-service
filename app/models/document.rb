@@ -5,6 +5,11 @@ class Document
   field :src, type: String
   field :content, type: Hash
 
+  def initialize(*args)
+    super(*args)
+    self.public_id ||= UUID.generate
+  end  
+  
   after_create do |m|
     DocumentService.created(m._id.to_s)
   end

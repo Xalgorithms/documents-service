@@ -1,5 +1,5 @@
 class EventSerializer < Serializer
-  def self.one(m)
+  def self.one(m, context=nil)
     {
       id: m.public_id,
       name: m.class.name.demodulize.downcase,

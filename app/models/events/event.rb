@@ -11,7 +11,7 @@ module Events
     end
 
     after_create do |e|
-      EventService.created(e)
+      EventService.created(e._id)
     end
   end
 end

@@ -1,11 +1,14 @@
 class EventService
-  def self.created(em)
+  def self.created(id)
     @events ||= {
       'add' => method(:created_add)
     }
 
-    fn = @events.fetch(em.class.name.demodulize.downcase)
-    fn.call(em) if fn
+    em = Events::Event.find(id)
+    if em
+      fn = @events.fetch(em.class.name.demodulize.downcase)
+      fn.call(em) if fn
+    end
   end
 
   private

@@ -19,9 +19,9 @@ describe Api::V1::EventsController, type: :controller do
 
   it 'should accept add events' do
     rand_array_of_documents.each do |doc|
-      created_public_id = nil
-      expect(EventService).to receive(:created) do |em|
-        created_public_id = em.public_id
+      created_id = nil
+      expect(EventService).to receive(:created) do |id|
+        created_id = id
       end
       
       post(:create, params: { name: 'add', payload: { document: MultiJson.encode(doc) } })
@@ -36,7 +36,7 @@ describe Api::V1::EventsController, type: :controller do
       expect(em.document).to eql(MultiJson.encode(doc))
       expect(o).to eql(EventSerializer.one(em).with_indifferent_access)
 
-      expect(created_public_id).to eql(em.public_id)
+      expect(created_id).to eql(em._id)
 
       # see if we can get it
       get(:show, params: { id: em.public_id })

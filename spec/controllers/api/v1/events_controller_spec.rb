@@ -19,8 +19,6 @@ describe Api::V1::EventsController, type: :controller do
 
   it 'should accept add events' do
     rand_array_of_documents.each do |doc|
-      count = Document.count
-
       created_public_id = nil
       expect(EventService).to receive(:created) do |em|
         created_public_id = em.public_id

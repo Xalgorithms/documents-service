@@ -24,6 +24,9 @@ gem 'xa-ubl', github: 'Xalgorithms/xa-ubl'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'radish', github: 'karfai/radish'
+#gem 'radish', path: '../../../../projects/radish'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

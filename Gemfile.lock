@@ -8,10 +8,16 @@ GIT
 
 GIT
   remote: https://github.com/Xalgorithms/xa-ubl.git
-  revision: f6e84970b34cee8f9bd0152297752c28cd389947
+  revision: 84cc1264d73d0cac5c8facc2c718b819ab29fb89
   specs:
     xa-ubl (0.0.3)
       nokogiri
+
+GIT
+  remote: https://github.com/karfai/radish.git
+  revision: d530c1f3890dc97a24a72c531c1229dc35a51cde
+  specs:
+    radish (0.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -208,6 +214,7 @@ DEPENDENCIES
   mongoid-rspec
   pry-rails
   puma (~> 3.0)
+  radish!
   rails (~> 5.0.3)
   rspec-rails
   spring

@@ -4,6 +4,7 @@ class Document
   field :public_id, type: String
   field :src, type: String
   field :content, type: Hash
+  field :envelope, type: Hash
 
   def initialize(*args)
     super(*args)

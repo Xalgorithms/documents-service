@@ -36,19 +36,22 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PartyIdentification>
       <cbc:ID schemeID="TS:ID">5a8bb5df-89fb-4360-8f7e-f711ec846204</cbc:ID>
     </cac:PartyIdentification>
+      <cbc:IndustryClassificationCode listID="ISIC" listName="International Standard Industrial Classification" listVersionID="Rev.4">J5820</cbc:IndustryClassificationCode>
     <cac:PartyName>
       <cbc:Name>Xalgorithms Foundation</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
       <cbc:AddressFormatCode listAgencyID="6" listID="UN/ECE 3477" listVersionID="D08B">5</cbc:AddressFormatCode>
       <cbc:StreetName>Hines Road</cbc:StreetName>
-      <cbc:AdditionalStreetName>Kanata</cbc:AdditionalStreetName>
+      <cbc:AdditionalStreetName>North</cbc:AdditionalStreetName>
       <cbc:BuildingNumber>50</cbc:BuildingNumber>
       <cbc:CityName>Ottawa</cbc:CityName>
       <cbc:PostalZone>K2K 2M5</cbc:PostalZone>
-      <cbc:CountrySubentity>ON</cbc:CountrySubentity>
+        <cbc:CountrySubentityCode listID="ISO 3116-2" listAgencyID="6" listAgencyName="Foo" listName="Country Subentity" listVersionID="20010914">CA-ON</cbc:CountrySubentityCode>
+      <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
       <cac:Country>
-	<cbc:IdentificationCode>CA</cbc:IdentificationCode>
+        <cbc:IdentificationCode listID="ISO 3116-1" listAgencyID="6" listAgencyName="United Nations Economic Commission for Europe" listName="Country" listVersionID="20010914">CA</cbc:IdentificationCode>
+        <cbc:Name>Canada</cbc:Name>
       </cac:Country>
     </cac:PostalAddress>
     <cac:Contact>
@@ -59,6 +62,16 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
       <cbc:FirstName>Joseph</cbc:FirstName>
       <cbc:FamilyName>Potvin</cbc:FamilyName>
     </cac:Person>
+    <cac:PhysicalLocation>
+      <cac:Address>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO 3116-1" listAgencyID="6" listAgencyName="United Nations Economic Commission for Europe" listName="Country" listVersionID="20010914">CA</cbc:IdentificationCode>
+          <cbc:Name>Canada</cbc:Name>
+        </cac:Country>
+        <cbc:CountrySubentityCode listID="ISO 3116-2" listAgencyID="6" listAgencyName="Another" listName="Country Subentity" listVersionID="20010914">CA-QC</cbc:CountrySubentityCode>
+        <cbc:CountrySubentity>Quebec</cbc:CountrySubentity>
+      </cac:Address>
+    </cac:PhysicalLocation>
   </cac:Party>
 </cac:AccountingSupplierParty>
 <cac:AccountingCustomerParty>
@@ -66,6 +79,7 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PartyIdentification>
       <cbc:ID schemeID="TS:ID">9a928370-7ad6-47fb-972a-78888c7be302</cbc:ID>
     </cac:PartyIdentification>
+    <cbc:IndustryClassificationCode listID="ISIC" listName="International Standard Industrial Classification" listVersionID="Rev.4">J6201</cbc:IndustryClassificationCode>
     <cac:PartyName>
       <cbc:Name>strangeware</cbc:Name>
     </cac:PartyName>
@@ -75,15 +89,41 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
       <cbc:BuildingNumber>49</cbc:BuildingNumber>
       <cbc:CityName>Ottawa</cbc:CityName>
       <cbc:PostalZone>K1K2V8</cbc:PostalZone>
-      <cbc:CountrySubentity>ON</cbc:CountrySubentity>
+      <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
+      <cbc:CountrySubentityCode>CA-ON</cbc:CountrySubentityCode>
       <cac:Country>
 	<cbc:IdentificationCode>CA</cbc:IdentificationCode>
+	<cbc:Name>Canada</cbc:Name>
       </cac:Country>
+      <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
     </cac:PostalAddress>
     <cac:Contact></cac:Contact>
+    <cac:PhysicalLocation>
+      <cac:Address>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO 3116-1">CA</cbc:IdentificationCode>
+        </cac:Country>
+        <cbc:CountrySubentityCode listID="ISO 3116-2">CA-ON</cbc:CountrySubentityCode>
+      </cac:Address>
+    </cac:PhysicalLocation>
   </cac:Party>
 </cac:AccountingCustomerParty>
-<cac:Delivery></cac:Delivery>
+<cac:Delivery>
+  <cac:DeliveryAddress>
+    <cbc:AddressFormatCode listAgencyID="6" listID="UN/ECE 3477" listVersionID="D08B">5</cbc:AddressFormatCode>
+    <cbc:StreetName>Jardin Pvt</cbc:StreetName>
+    <cbc:BuildingNumber>49</cbc:BuildingNumber>
+    <cbc:CityName>Ottawa</cbc:CityName>
+    <cbc:PostalZone>K1K2V8</cbc:PostalZone>
+    <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
+    <cbc:CountrySubentityCode>CA-ON</cbc:CountrySubentityCode>
+    <cac:Country>
+      <cbc:IdentificationCode>CA</cbc:IdentificationCode>
+      <cbc:Name>Canada</cbc:Name>
+    </cac:Country>
+    <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>    
+  </cac:DeliveryAddress>
+</cac:Delivery>
 <cac:PaymentMeans>
   <cbc:ID>e529efbf-823a-45fd-b0a6-c91c02bc53f2</cbc:ID>
   <cbc:PaymentMeansCode listID="urn:tradeshift.com:api:1.0:paymentmeanscode">42</cbc:PaymentMeansCode>

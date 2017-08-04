@@ -9,6 +9,15 @@ module Api
           head(:not_found)
         end
       end
+
+      def envelope
+        dm = Document.where(public_id: params[:document_id]).first
+        if dm
+          render(json: dm.envelope)
+        else
+          head(:not_found)
+        end
+      end
     end
   end
 end

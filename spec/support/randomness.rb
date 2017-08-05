@@ -59,6 +59,14 @@ module Randomness
   def rand_document
     rand_array_of_hexes.inject({}) { |o, k| o.merge(k => Faker::Number.hexadecimal(10)) }
   end
+
+  def rand_country
+    ISO3166::Country.new(rand_one(ISO3166::Country.codes))
+  end
+
+  def rand_array_of_countries(n = 10)
+    rand_array(n) { rand_country }
+  end
 end
 
 RSpec.configure do |config|

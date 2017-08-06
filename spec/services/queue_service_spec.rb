@@ -8,11 +8,11 @@ describe QueueService do
       pub = double(:publisher)
       sent = nil
       expect(pub).to receive(:publish) do |n, o|
-        expect(n).to eql('director')
+        expect(n).to eql('')
         sent = o
       end
         
-      expect(XA::Messages::DirectPublisher).to receive(:for).with('sneakers').and_yield(pub)
+      expect(XA::Messages::DirectPublisher).to receive(:for).with('xa.rules.requests').and_yield(pub)
       
 
       # document > document_service > queue_service should be auto-triggered on document creation

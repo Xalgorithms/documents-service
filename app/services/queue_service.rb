@@ -11,9 +11,9 @@ class QueueService
   
   def self.document_created(id)
     dm = Document.find(id)
-    XA::Messages::DirectPublisher.for('sneakers') do |pub|
+    XA::Messages::DirectPublisher.for('xa.rules.requests') do |pub|
       o = DocumentSerializer.one(dm)
-      pub.publish('director', origin: 'documents', name: 'document.created', details: o)
+      pub.publish('', origin: 'documents', name: 'document.created', details: o)
     end unless Rails.env.test? && !@@force_publish
   end
 end

@@ -9,7 +9,7 @@ class DocumentService
   end
 
   def self.make_envelope(content)
-    env = {}.tap do |o|
+    env = { type: :invoice }.tap do |o|
       sic = get(content, 'parties.supplier.industry_code', {})
       cic = get(content, 'parties.customer.industry_code', {})
 

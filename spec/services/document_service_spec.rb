@@ -49,18 +49,15 @@ describe DocumentService do
       'spec/files/gas_tax_example.xml',
     ]
     with_files(files) do |src, content|
-      ex = {
-        'industry' => {
-          'supplier' => get(content, 'parties.supplier.industry_code.value'),
-          'customer' => get(content, 'parties.customer.industry_code.value'),
-        },
-      }
+      env = DocumentService.make_envelope(content)
 
-      expect(DocumentService).to receive(:make_envelope).and_return(ex)
-      dm = Document.create(src: src)
+      expect(env).to have_key(:supplier)
+      expect(env[:supplier]).to have_key(:industry)
+      expect(env[:supplier][:industry]).to eql(get(content, 'parties.supplier.industry_code.value'))
 
-      dm.reload
-      expect(dm.envelope).to eql(ex)
+      expect(env).to have_key(:customer)
+      expect(env[:customer]).to have_key(:industry)
+      expect(env[:customer][:industry]).to eql(get(content, 'parties.customer.industry_code.value'))
     end
   end
 
@@ -83,11 +80,14 @@ describe DocumentService do
   it 'should configure the envelope location country code from physical location and postal address' do
     some_countries do |sc, cc|
       ex = {
-        locations: {
-          supplier: {
+        type: :invoice,
+        supplier: {
+          location: {
             country: sc.alpha2,
-          },
-          customer: {
+          }
+        },
+        customer: {
+          location: {
             country: cc.alpha2,
           },
         }
@@ -125,14 +125,17 @@ describe DocumentService do
       csek = rand_one(cc.subdivisions.keys)
       cse = { country: cc, subentity: cc.subdivisions[csek], code: csek }
       ex = {
-        locations: {
-          supplier: {
+        type: :invoice,
+        supplier: {
+          location: {
             subentity: ssek,
           },
-          customer: {
+        },
+        customer: {
+          location: {
             subentity: csek,
           },
-        }
+        },
       }
 
       keys = [
@@ -156,16 +159,19 @@ describe DocumentService do
       csek = rand_one(cc.subdivisions.keys)
       cse = cc.subdivisions[csek]
       ex = {
-        locations: {
-          supplier: {
+        type: :invoice,
+        supplier: {
+          location: {
             country: sc.alpha2,
             subentity: ssek,
           },
-          customer: {
+        },
+        customer: {
+          location: {
             country: cc.alpha2,
             subentity: csek,
           },
-        }
+        },
       }
       
       sup = {

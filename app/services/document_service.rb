@@ -10,16 +10,19 @@ class DocumentService
 
   def self.make_envelope(content)
     env = { type: :invoice }.tap do |o|
+      supplier = {}
+      customer = {}
+      
       sic = get(content, 'parties.supplier.industry_code', {})
       cic = get(content, 'parties.customer.industry_code', {})
 
       v = get(sic, 'value', nil)
       if get(sic, 'list.id', nil) == 'ISIC' && v
-        o[:industry] = { supplier: v }
+        supplier = supplier.merge(industry: v)
       end
       v = cic.fetch('value', nil)
       if get(cic, 'list.id', nil) == 'ISIC' && v
-        o[:industry] = o[:industry].merge(customer: v)
+        customer = customer.merge(industry: v)
       end
 
       sc = find_country(
@@ -70,10 +73,11 @@ class DocumentService
       cloc = { country: cc.alpha2 } if cc
       cloc = (cloc || {}).merge(subentity: csek) if csek
 
-      locations = { supplier: sloc } if sloc
-      locations = locations.merge({ customer: cloc }) if cloc
+      supplier = supplier.merge(location: sloc) if sloc
+      customer = customer.merge(location: cloc) if cloc
       
-      o[:locations] = locations if locations
+      o[:supplier] = supplier if supplier.any?
+      o[:customer] = customer if customer.any?
     end
   end
   

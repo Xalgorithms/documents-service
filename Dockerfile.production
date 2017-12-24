@@ -1,0 +1,1 @@
+FROM xalgorithms/xadf-base-image-ruby:0.0.2-production

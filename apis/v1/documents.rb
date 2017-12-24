@@ -5,9 +5,15 @@ module Documents
   class APIv1 < Grape::API
     format :json
 
-    # get do
-    # end
-
+    params do
+      requires :id, type: String
+    end
+    route_param :id do
+      get do
+        Services::Documents.find(params[:id])
+      end
+    end
+    
     post do
       f = params[:content][:tempfile]
       id = Services::Documents.create(f)

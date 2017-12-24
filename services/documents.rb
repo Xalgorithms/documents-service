@@ -11,9 +11,20 @@ module Services
     def self.create(f)
       doc = Loader.new.parse(f.read)
       id = UUID.generate
-      cl = Arango::Connection.new
-      cl.databases['lichen'].collections['documents'].add(id: id, content: doc)
+      collection.add(id: id, content: doc)
       id
+    end
+
+    def self.find(id)
+      doc = collection.by_example(id: id).first
+      doc.content.fetch('content', nil) if doc
+    end
+
+    private
+
+    def self.collection
+      cl = Arango::Connection.new
+      cl.databases['lichen'].collections['documents']
     end
   end
 end

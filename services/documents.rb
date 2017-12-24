@@ -1,4 +1,6 @@
+require 'arango/connection'
 require 'xa/ubl/invoice'
+require 'uuid'
 
 module Services
   class Documents
@@ -7,10 +9,11 @@ module Services
     end
     
     def self.create(f)
-      # parse
-      Loader.new.parse(f.read) do |doc|
-        p doc
-      end
+      doc = Loader.new.parse(f.read)
+      id = UUID.generate
+      cl = Arango::Connection.new
+      cl.databases['lichen'].collections['documents'].add(id: id, content: doc)
+      id
     end
   end
 end

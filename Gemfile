@@ -11,6 +11,7 @@ gem 'arango-client', git: 'https://github.com/karfai/arango-client.git'
 gem 'foreman'
 gem 'grape'
 gem 'puma'
+gem 'uuid'
 
 group :development do
   gem 'pry'

@@ -10,8 +10,8 @@ module Documents
 
     post do
       f = params[:content][:tempfile]
-      Services::Documents.create(f)
-      { }
+      id = Services::Documents.create(f)
+      { id: id }
     end
   end
 end

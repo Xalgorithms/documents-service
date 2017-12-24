@@ -9,3 +9,7 @@ gem 'xa-ubl', git: 'https://github.com/Xalgorithms/xa-ubl.git'
 gem 'foreman'
 gem 'grape'
 gem 'puma'
+
+group :development do
+  gem 'pry'
+end

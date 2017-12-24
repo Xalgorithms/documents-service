@@ -1,4 +1,5 @@
 require 'grape'
+require_relative '../../services/documents'
 
 module Documents
   class APIv1 < Grape::API
@@ -8,8 +9,8 @@ module Documents
     # end
 
     post do
-      content = params[:content][:tempfile].read
-
+      f = params[:content][:tempfile]
+      Services::Documents.create(f)
       { }
     end
   end

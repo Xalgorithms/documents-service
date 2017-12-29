@@ -1,3 +1,5 @@
+require_relative './schedule'
+
 require 'arango/connection'
 require 'xa/ubl/invoice'
 require 'uuid'
@@ -12,6 +14,7 @@ module Services
       doc = Loader.new.parse(f.read)
       id = UUID.generate
       collection.add(id: id, content: doc)
+      Schedule.send_document(doc)
       id
     end
 

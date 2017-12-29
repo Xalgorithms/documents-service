@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/karfai/arango-client.git
-  revision: 5242a7ff53a7828b3de9f8380e61ee7336ad61c6
+  revision: 4b14f7094f29066eadd06e040a210f0ad34bdd76
   specs:
-    arango-client (0.0.3)
+    arango-client (0.0.5)
       activesupport
       faraday
       faraday_middleware
@@ -86,6 +86,8 @@ PLATFORMS
 
 DEPENDENCIES
   arango-client!
+  faraday
+  faraday_middleware
   foreman
   grape
   pry

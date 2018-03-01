@@ -13,5 +13,8 @@ gem 'puma'
 gem 'uuid'
 
 group :development do
+  gem 'faker'
+  gem 'fuubar'
   gem 'pry'
+  gem 'rspec'
 end

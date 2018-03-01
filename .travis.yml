@@ -2,10 +2,8 @@ sudo: required
 language: ruby
 rvm:
 - 2.4.2
-services:
-- docker
 script:
-- "./build_images.sh"
+- bundle exec rspec
 notifications:
   slack:
     rooms:

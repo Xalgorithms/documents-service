@@ -1,1 +1,0 @@
-worker: bundle exec rackup -p 9000

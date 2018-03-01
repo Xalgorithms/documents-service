@@ -5,15 +5,6 @@ GIT
     xa-ubl (0.0.7)
       nokogiri
 
-GIT
-  remote: https://github.com/karfai/arango-client.git
-  revision: 4b14f7094f29066eadd06e040a210f0ad34bdd76
-  specs:
-    arango-client (0.0.5)
-      activesupport
-      faraday
-      faraday_middleware
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -85,7 +76,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  arango-client!
   faraday
   faraday_middleware
   foreman

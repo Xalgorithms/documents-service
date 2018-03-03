@@ -10,10 +10,10 @@ notifications:
       secure: q9LwAF9hUlcjCTN/s/5JnH7R0ERmWt84yCSb56T35SxVCz5d/f1ctx0Gg9T8nRF4yAVwNurtjzhN68WH+ee7rTeS4nH1d+yNhrtOFE+j7yJMAjX18kUXA3Cmeh/mZ8wGXuUz3esoFt22RDhABaAb6CDl0ebAvIbRgTHNJ+3mf2zmzJdt9obWRRz4WpCNMjmCAf7zMf2awMH1nuWfXPq9dKVb7mK8izweq0lmzacPJE1bfMQnG16doQVfxetkOp1RY0XdnPQ2nXjLWmSyEXm3V4WYJuRyP7hHA5y3iDMyJmCiWpone16tiRHfz3o2f2oAZ39Ums5zzUsSzHLQTFXS5cZ0O8sE+bIHJRLjXR7UZZAxENNkgy09kZq3Z03aS5ZOSHuD0JhCyIOObYgKg7oJ/zk1663HQJNZncyCmxUVOfXkULVOITWVD99l89tbwPi3C8WpbL6LoWE7Qfv4cNfF0slQnLcE3tP1EytdWUsOuzLfSBgj46YFsKd4pacGyHOiKEWZCoHNvwl9jjgJPv3cTj3HN1YfABkkFci5Y6Jljoore1YUcyeRzav2tCtkZSHfo6mKERO5vMj6S2qOP/UBpGVmL2//xv0NlDoWEUGTXvLN4ItDib3eiADrA8dz02Fch04ZaWD26/iakMqEIux539Rn2dyppLYjR0fvYoqpD94=
 before_install:
 - openssl aes-256-cbc -K $encrypted_bc7199ca6a4c_key -iv $encrypted_bc7199ca6a4c_iv
-  -in deployments-keys.json.enc -out deployments-keys.json -d
+  -in deployment-key.json.enc -out deployment-key.json -d
 deploy:
   provider: gae
-  keyfile: deployments-keys.json
+  keyfile: deployment-key.json
   project: imperial-sphere-184720
   on: production
   default: true

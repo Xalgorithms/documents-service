@@ -1,3 +1,7 @@
 entrypoint: bundle exec rackup --port $PORT
 env: flex
 runtime: ruby
+env_variables:
+  GCLOUD_USE_STORAGE: "true"
+  GCLOUD_PROJECT_ID: "841952115423"
+  GCLOUD_STORAGE_BUCKET: "lichen-documents"

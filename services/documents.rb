@@ -1,6 +1,6 @@
-require 'google/cloud/storage'
-require 'multi_json'
-require 'tempfile'
+require_relative './google_storage'
+require_relative './local_temp_storage'
+
 require 'uuid'
 
 # By default, this service will simply store the incoming UBL in a
@@ -10,32 +10,37 @@ require 'uuid'
 # $ GOOGLE_APPLICATION_CREDENTIALS=<path to creds json> GCLOUD_PROJECT_ID=<project_id> GCLOUD_USE_STORAGE=true bundle exec rackup
 module Services
   class Documents
-    def self.create(f)
-      use_gcs = ENV.fetch('GCLOUD_USE_STORAGE', '') == 'true'
-      use_gcs ? store_in_gcs(f) : store_locally(f)
+    def initialize
+      @locations = {
+        'google-storage' => GoogleStorage.new,
+        'local-tmp'      => LocalTempStorage.new,
+      }
     end
 
-    private
-
-    def self.store_in_gcs(f)
-      project_id = ENV.fetch('GCLOUD_PROJECT_ID', nil)
+    def self.create(f)
+      @service ||= Documents.new
+      @service.create(f)
+    end
+    
+    def create(f)
       id = UUID.generate
-      if project_id
-        bkt_name = ENV.fetch('GCLOUD_STORAGE_BUCKET', 'lichen-documents')
-        st = Google::Cloud::Storage.new(project_id: project_id)
-        bkt = st.bucket(bkt_name)
-        bkt.create_file(f, "#{id}.ubl")
-      else
-        # TODO
+
+      with_location do |loc|
+        loc.store(id, f)
       end
 
       id
     end
 
-    def self.store_locally(f)
-      tf = Tempfile.create('xadf')
-      tf.write(f.read)
-      tf.path
+    private
+
+    def with_location
+      k = ENV.fetch('DOCUMENT_STORAGE_LOCATION', 'local-tmp')
+      if @locations.key?(k)
+        yield(@locations[k])
+      else
+        puts "! invalid storage location (key=#{k})"
+      end
     end
   end
 end

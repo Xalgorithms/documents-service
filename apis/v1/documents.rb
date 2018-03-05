@@ -10,7 +10,6 @@ module Documents
     end
     route_param :id do
       get do
-        Services::Documents.find(params[:id])
       end
     end
     

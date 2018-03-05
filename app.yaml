@@ -3,9 +3,9 @@ env: flex
 runtime: ruby
 env_variables:
   GCLOUD_USE_STORAGE: "true"
-  GCLOUD_PROJECT_ID: "841952115423"
+  GCLOUD_PROJECT_ID: "211290057486"
   GCLOUD_STORAGE_BUCKET: "lichen-documents"
 automatic_scaling:
   min_num_instances: 1
-  max_num_instances: 2
+  max_num_instances: 1
   

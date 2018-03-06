@@ -10,13 +10,12 @@ module Documents
     end
     route_param :id do
       get do
-        Services::Documents.find(params[:id])
       end
     end
     
     post do
       f = params[:content][:tempfile]
-      id = Services::Documents.create(f)
+      id = Services::Documents.create(headers['X-Lichen-Token'], f)
       { id: id }
     end
   end

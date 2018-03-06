@@ -14,6 +14,6 @@ before_install:
 deploy:
   provider: gae
   keyfile: deployment-key.json
-  project: imperial-sphere-184720
+  project: lichen-ui
   on: production
   default: true

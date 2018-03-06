@@ -15,7 +15,7 @@ module Documents
     
     post do
       f = params[:content][:tempfile]
-      id = Services::Documents.create(f)
+      id = Services::Documents.create(headers['X-Lichen-Token'], f)
       { id: id }
     end
   end

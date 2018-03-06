@@ -1,5 +1,6 @@
 require_relative './google_storage'
 require_relative './local_temp_storage'
+require_relative '../lib/functions'
 
 require 'uuid'
 
@@ -15,20 +16,23 @@ module Services
         'google-storage' => GoogleStorage.new,
         'local-tmp'      => LocalTempStorage.new,
       }
+      @functions = Functions.new
     end
 
-    def self.create(f)
+    def self.create(token, f)
       @service ||= Documents.new
-      @service.create(f)
+      @service.create(token, f)
     end
     
-    def create(f)
+    def create(token, f)
       id = UUID.generate
 
-      with_location do |loc|
-        loc.store(id, f)
+      if @functions.document(token, "/documents/#{id}")
+        with_location do |loc|
+          loc.store(id, f)
+        end
       end
-
+      
       id
     end
 

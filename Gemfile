@@ -13,6 +13,7 @@ gem 'grape'
 gem 'multi_json'
 gem 'puma'
 gem 'uuid'
+gem 'rack-cors'
 
 group :development do
   gem 'faker'

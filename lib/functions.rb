@@ -19,13 +19,17 @@ class Functions
 
   def document(token, url)
     puts "> POST /document"
-    resp = @conn.post('/document', { token: token, url: url })
-    puts "< #{resp.status}"
-    if resp.success?
-      true
+    if @conn
+      resp = @conn.post('/document', { token: token, url: url })
+      puts "< #{resp.status}"
+      if resp.success?
+        true
+      else
+        puts "! failed to send document (#{resp.body})"
+        false
+      end
     else
-      puts "! failed to send document (#{resp.body})"
-      false
+      true
     end
   end
 end

@@ -22,6 +22,12 @@ module Services
       end
     end
 
+    def get(id)
+      if bucket
+        bucket.file("#{id}.ubl").download
+      end
+    end
+    
     private
     
     def bucket

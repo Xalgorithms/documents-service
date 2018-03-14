@@ -13,7 +13,7 @@ module Services
         m = /^(.+).ubl$/.match(File.basename(fn))
         m && m[1] == id
       end
-      fn ? File.read(fn) : nil
+      fn ? File.open(fn) : nil
     end
   end
 end

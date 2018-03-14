@@ -50,7 +50,7 @@ module Services
     def get(id, fmt)
       with_location do |loc|
         content = loc.get(id)
-        fmt == 'json' ? MultiJson.encode(Parser.new.parse(content)) : content
+        fmt == 'json' ? MultiJson.encode(Parser.new.parse(content)) : content.read
       end
     end
 

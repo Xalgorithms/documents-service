@@ -2,7 +2,9 @@ require_relative './google_storage'
 require_relative './local_temp_storage'
 require_relative '../lib/functions'
 
+require 'multi_json'
 require 'uuid'
+require 'xa/ubl/invoice'
 
 # By default, this service will simply store the incoming UBL in a
 # tempfile and send back the path of that file. In order to test
@@ -11,6 +13,10 @@ require 'uuid'
 # $ GOOGLE_APPLICATION_CREDENTIALS=<path to creds json> GCLOUD_PROJECT_ID=<project_id> GCLOUD_USE_STORAGE=true bundle exec rackup
 module Services
   class Documents
+    class Parser
+      include XA::UBL::Invoice
+    end
+    
     def initialize
       @locations = {
         'google-storage' => GoogleStorage.new,
@@ -23,6 +29,11 @@ module Services
       @service ||= Documents.new
       @service.create(token, f)
     end
+
+    def self.get(id, fmt)
+      @service ||= Documents.new
+      @service.get(id, fmt)
+    end
     
     def create(token, f)
       id = UUID.generate
@@ -34,6 +45,13 @@ module Services
       end
       
       id
+    end
+
+    def get(id, fmt)
+      with_location do |loc|
+        content = loc.get(id)
+        fmt == 'json' ? MultiJson.encode(Parser.new.parse(content)) : content
+      end
     end
 
     private

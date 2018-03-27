@@ -1,6 +1,6 @@
 require_relative './google_storage'
 require_relative './local_temp_storage'
-require_relative '../lib/functions'
+require_relative '../lib/clients/functions'
 
 require 'multi_json'
 require 'uuid'
@@ -22,7 +22,7 @@ module Services
         'google-storage' => GoogleStorage.new,
         'local-tmp'      => LocalTempStorage.new,
       }
-      @functions = Functions.new
+      @functions = Clients::Functions.new
     end
 
     def self.create(token, f)

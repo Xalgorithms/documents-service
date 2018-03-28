@@ -1,8 +1,9 @@
 GIT
   remote: https://github.com/Xalgorithms/xa-ubl.git
-  revision: 9d2f2d0e1a4f33a6d1a95f54c6f24978eb0f895c
+  revision: 23f1dcf31be4877cc7e9f32f8f882fd9f85f3dda
   specs:
-    xa-ubl (0.0.7)
+    xa-ubl (0.0.9)
+      activesupport
       nokogiri
 
 GEM
@@ -96,7 +97,7 @@ GEM
     mustermann (1.0.1)
     mustermann-grape (1.0.0)
       mustermann (~> 1.0.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     os (0.9.6)
     pry (0.11.3)

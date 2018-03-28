@@ -6,6 +6,7 @@ env_variables:
   GCLOUD_PROJECT_ID: "211290057486"
   GCLOUD_STORAGE_BUCKET: "lichen-documents"
   FIREBASE_FUNCTION_URL: "https://us-central1-lichen-ui.cloudfunctions.net/"
+  XADF_SCHEDULE_URL: "https://35.231.81.35:9000"
 automatic_scaling:
   min_num_instances: 1
   max_num_instances: 1

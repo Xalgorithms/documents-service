@@ -5,6 +5,7 @@ ruby '2.4.2'
 # ours
 gem 'xa-ubl', git: 'https://github.com/Xalgorithms/xa-ubl.git'
 
+gem 'activesupport'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'foreman'

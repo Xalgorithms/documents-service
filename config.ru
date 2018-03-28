@@ -7,5 +7,4 @@ use Rack::Cors do
     resource '*', headers: :any, methods: [:get, :post, :options]
   end
 end
-
-run APIs
+run AllAPIs

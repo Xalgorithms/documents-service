@@ -35,7 +35,7 @@ module APIs
           resource :actions do
             post do
               o = MultiJson.decode(request.body.read)
-              err = Services::Actions.invoke(:documents, o['name'], o['payload'].merge(document_id: params[:id]))
+              err = Services::Actions.invoke(:documents, o['name'], o.fetch('payload', {}).merge(document_id: params[:id]))
               if err
                 error!(err.slice(:status, :reason), 404)
               else
